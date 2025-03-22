@@ -1,0 +1,7 @@
+<properties>
+ 
+	<property name="/visualops/channelfullview/*.api"	 
+			  class="org.frameworkset.mvc.DBQueryController">
+	</property>
+ 
+</properties>
