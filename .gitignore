@@ -5,3 +5,6 @@
 /out/
 /.classpath
 /.project
+/src/main/java/org/frameworkset/datatran/
+/src/main/resources/channelOrderDBTest.xml
+/src/main/resources/synchannelOrderDBTest.xml

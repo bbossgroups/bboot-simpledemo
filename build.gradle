@@ -143,9 +143,11 @@ configure(allprojects) { project ->
          fileTree(dir: 'lib', include: '**/*.jar'),
     	)
 		api (
-				[group: 'com.bbossgroups', name: 'bboss-bootstrap-rt', version: "${bboss_version}", transitive: true]
+                [group: 'com.github.housepower', name: 'clickhouse-native-jdbc-shaded', version: "${clickhouse_verion}", transitive: true],
+                [group: 'com.mysql', name: 'mysql-connector-j', version: "8.2.0", transitive: false],
+                [group: 'com.bbossgroups.plugins', name: 'bboss-datatran-fileftp', version: "${bboss_datatran_version}", transitive: true],
+                [group: 'com.bbossgroups', name: 'bboss-bootstrap-rt', version: "${bboss_version}", transitive: true]
 		)
-        api "com.github.housepower:clickhouse-native-jdbc-shaded:${clickhouse_native_jdbc_version}"
 	}
 
     task releaseVersion(type: Zip,dependsOn:['copyToolFiles','copyWebrootFiles','copyResourcesfiles']) {

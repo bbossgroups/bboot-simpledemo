@@ -1,0 +1,705 @@
+app:
+  description: 基于Clickhouse渠道订单和退订分析-Echart-LLM
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: Clickhouse渠道订单和退订分析
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.5@fd6efd37c2a931911de8ab9ca3ba2da303bef146d45ee87ad896b04b36d09403
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/xinference:0.0.2@04dee9c8396689421df7537f73ebb4b26efbcb7e0b9c32b7f09236e84bb97b3c
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: knowledge-retrieval
+      id: 1741924217562-source-1741936141144-target
+      selected: false
+      source: '1741924217562'
+      sourceHandle: source
+      target: '1741936141144'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: parameter-extractor
+      id: 1741939893809-source-1741940406325-target
+      selected: false
+      source: '1741939893809'
+      sourceHandle: source
+      target: '1741940406325'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: parameter-extractor
+        targetType: tool
+      id: 1741940406325-source-1741936394299-target
+      selected: false
+      source: '1741940406325'
+      sourceHandle: source
+      target: '1741936394299'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: llm
+      id: 1741936394299-source-1741936418260-target
+      selected: false
+      source: '1741936394299'
+      sourceHandle: source
+      target: '1741936418260'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: if-else
+      id: 1741936141144-source-1742262878091-target
+      source: '1741936141144'
+      sourceHandle: source
+      target: '1742262878091'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1742262878091-true-1741939893809-target
+      source: '1742262878091'
+      sourceHandle: 'true'
+      target: '1741939893809'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1742262878091-false-1742262920896-target
+      source: '1742262878091'
+      sourceHandle: 'false'
+      target: '1742262920896'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1742203199390-source-1742265602173-target
+      source: '1742203199390'
+      sourceHandle: source
+      target: '1742265602173'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1742265602173-source-answer-target
+      source: '1742265602173'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: llm
+      id: 1741936394299-source-1742203199390-target
+      source: '1741936394299'
+      sourceHandle: source
+      target: '1742203199390'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1741936418260-source-answer-target
+      source: '1741936418260'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 开始
+        type: start
+        variables: []
+      height: 53
+      id: '1741924217562'
+      position:
+        x: 489.24960232781376
+        y: -184.05934685711455
+      positionAbsolute:
+        x: 489.24960232781376
+        y: -184.05934685711455
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: '{{#1741936418260.text#}}
+
+
+
+          统计图表：
+
+          {{#1742265602173.result#}}
+
+          '
+        desc: ''
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 123
+      id: answer
+      position:
+        x: 2740.5019310403313
+        y: -123.20436966175185
+      positionAbsolute:
+        x: 2740.5019310403313
+        y: -123.20436966175185
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        dataset_ids:
+        - 57d8f21e-cd60-4d1d-82a8-644eb0fe557f
+        desc: ''
+        metadata_filtering_conditions:
+          conditions: []
+          logical_operator: and
+        metadata_filtering_mode: disabled
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          reranking_model:
+            model: bge-reranker-base
+            provider: langgenius/xinference/xinference
+          top_k: 4
+          weights:
+            keyword_setting:
+              keyword_weight: 0
+            vector_setting:
+              embedding_model_name: bge-large-zh-v1.5
+              embedding_provider_name: langgenius/xinference/xinference
+              vector_weight: 1
+        query_variable_selector:
+        - '1741924217562'
+        - sys.query
+        retrieval_mode: multiple
+        selected: true
+        title: 知识检索
+        type: knowledge-retrieval
+      height: 91
+      id: '1741936141144'
+      position:
+        x: 681.7227093763205
+        y: -25.470715221039782
+      positionAbsolute:
+        x: 681.7227093763205
+        y: -25.470715221039782
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          label:
+            en_US: sql
+            ja_JP: sql
+            pt_BR: sql
+            zh_Hans: sql
+          llm_description: ''
+          max: null
+          min: null
+          name: sql
+          options: []
+          placeholder:
+            en_US: ''
+            ja_JP: ''
+            pt_BR: ''
+            zh_Hans: ''
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        params:
+          sql: ''
+        provider_id: e98254d7-24b6-47d0-84c9-fe69105e621e
+        provider_name: 可视化运营数据查询服务
+        provider_type: api
+        selected: false
+        title: 执行数据库查询工具
+        tool_configurations: {}
+        tool_label: queryData
+        tool_name: queryData
+        tool_parameters:
+          sql:
+            type: mixed
+            value: '{{#1741940406325.sql#}}'
+        type: tool
+      height: 53
+      id: '1741936394299'
+      position:
+        x: 1839.612308885975
+        y: -85.97727206268554
+      positionAbsolute:
+        x: 1839.612308885975
+        y: -85.97727206268554
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1741936394299'
+          - text
+        desc: 分析数据给出分析报告
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-reasoner
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 94bfd905-29a9-48bd-909b-062df2210cb5
+          role: system
+          text: '## 角色
+
+            你是一个专业的数据分析专家，并且精通根据用户的问题和业务数据，分析用户需求并给出专家级的分析报告。
+
+            ## 背景
+
+            根据用户的问题和业务数据，分析用户需求并给出专家级的分析报告，对于用户的工作效率提升十分重要
+
+            ## 任务
+
+            1.根据用户的问题{{#sys.query#}}和{{#context#}}，分析用户需求并给出专家级的分析报告。
+
+            2.以表格方式输出各月份留存统计数据
+
+            ## 输出最终回答
+
+            必须先对接收到数据进行一个推理和思考，保证每一个结果的名称在回答用户问题的时候是正确的，然后根据用户的问题进行一步步逻辑推
+
+            导出用户问题的最终正确答案或者最合适的回答。'
+        selected: false
+        title: 分析数据给出分析报告
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1741936418260'
+      position:
+        x: 2188.353403461764
+        y: -34.093842752725216
+      positionAbsolute:
+        x: 2188.353403461764
+        y: -34.093842752725216
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1741936141144'
+          - result
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: f90eb7e3-3e31-4701-bfd1-327bf525cd1a
+          role: system
+          text: '## 角色
+
+            你是一个专业的数据库专家，并且精通根据用户的问题、数据表结构生成可执行的SQL语句。
+
+            ## 背景
+
+            根据用户的问题，准确确定用户需求，首先查看输入数据表结构数据，然后编写准确的并且可直接运行的SQL语句
+
+            ## 任务
+
+            根据用户的问题{{#sys.query#}}，首先查看{{#context#}}中的数据表结构数据，然后编写可执行的Clickhouse SQL语句，SQL查询字段可以加英文别名。
+
+
+            ## Clickhouse语法提示
+
+            如果需要子查询的话需要用如下的语法：
+
+            select * from table where id in (select t.id from (select * from table
+            limit 0,10)as t)
+
+
+            ## 首先进行下面的逻辑推理过程
+
+            1.根据接收到的数据表结构数据,了解数据库表结构
+
+            2.梳理和理解用户需求
+
+            3.分析这个需求需要编写多少SQL语句，不能超过5次数据库查询：
+
+            4.分析如何编写SQL语句使得以最少的SQL查询次数进行查询数据库。
+
+            5.尝试编写仅仅一条或者五条以内的SQL来查询数据库
+
+            6.生成的SQL查询字段可以加英文别名，不要加中文别名
+
+            7.判断SQL语句是否符合Clickhouse语句的语法，修复错误语法
+
+            ## 输出最终回答
+
+            直接输出生成可执行的SQL语句，不要输出其他额外信息。'
+        selected: false
+        title: 生成数据库sql语句
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1741939893809'
+      position:
+        x: 1269.4199196591337
+        y: -163.0722962839112
+      positionAbsolute:
+        x: 1269.4199196591337
+        y: -163.0722962839112
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        instruction: 提取{{#1741939893809.text#}}中包含的sql语句，并输出
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        parameters:
+        - description: sql
+          name: sql
+          required: false
+          type: string
+        query:
+        - '1741939893809'
+        - text
+        reasoning_mode: prompt
+        selected: false
+        title: 参数提取器
+        type: parameter-extractor
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1741940406325'
+      position:
+        x: 1531.2154772342374
+        y: -7.998018359311686
+      positionAbsolute:
+        x: 1531.2154772342374
+        y: -7.998018359311686
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1741936394299'
+          - text
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: deepseek-chat
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 53efb3f0-cfa8-4e78-8e98-38748e5ae846
+          role: system
+          text: "# 输入数据\n{{#context#}}\n# 基于输入数据，参考以下结构生成可执行的Echart图脚本\nEchart图脚本案例：\n\
+            ```echarts\n   {\n        \"grid\": {\n            \"top\": \"25px\",\n\
+            \            \"left\": \"15px\",\n            \"right\": \"15px\",\n \
+            \           \"bottom\": \"12px\",\n            \"containLabel\": true\n\
+            \        },\n        \"tooltip\": {\n            \"trigger\": \"axis\"\
+            ,\n            \"axisPointer\": {\n                type: \"shadow\"\n\
+            \            }\n        },\n        \"xAxis\": [\n            {\n    \
+            \            \"splitLine\": {\n                    \"show\": false\n \
+            \               },\n                \"axisTick\": {\n                \
+            \    \"show\": false\n                },\n                \"axisLine\"\
+            : {\n                    \"lineStyle\": {\n                        \"\
+            color\": \"#0f91d0\"\n                    }\n                },\n    \
+            \            \"type\": \"value\",                        \n          \
+            \      \"axisLabel\": {                   \n                    \"color\"\
+            : \"#194296\", //刻度线标签颜色\n                    \"textStyle\": {\n     \
+            \                   \"color\": \"#289CD4\",\n                        \"\
+            fontSize\": 12\n                    }\n                }\n           \
+            \ }\n        ],\n        \"yAxis\": [\n            {\n               \
+            \ \"splitArea\": {\n                    \"show\": false\n            \
+            \    },\n                \"splitLine\": {\n                    \"show\"\
+            : false\n                },\n                \"axisTick\": {\n       \
+            \             \"show\": false\n                },\n                \"\
+            axisLine\": {\n                    \"lineStyle\": {\n                \
+            \        \"color\": \"#0f91d0\"\n                    }\n             \
+            \   },\n                \"type\": \"category\",\n                \"data\"\
+            : [\n                    \"0-2秒\",\n                    \"3-5秒\",\n  \
+            \                  \"6-10秒\",\n                    \"11-20秒\",\n     \
+            \               \"20-30秒\",\n                    \"30-50秒\",\n       \
+            \             \"50-100秒\",\n                    \">100秒\"\n          \
+            \      ],\n                \"axisLabel\": {\n                    \"textStyle\"\
+            : {\n                        \"color\": \"#289CD4\",\n               \
+            \         \"fontSize\": 12\n                    }\n                }\n\
+            \            }\n        ],\n        \"series\": [\n            {\n   \
+            \             \"name\": \"页面访问人数\",\n                \"type\": \"bar\"\
+            ,\n                \"barWidth\": 5, //柱图宽度\n                \"itemStyle\"\
+            : {\n                    \"normal\": {\n                        \"color\"\
+            : \"#da787e\"\n                    }\n                },\n           \
+            \     \"data\": [\n                    2,\n                    3,\n  \
+            \                  5,\n                    58,\n                    22,\n\
+            \                    33,\n                    12,\n                  \
+            \  15\n                ]\n            }\n        ]\n    }\n```\n# 生成输出文件\n\
+            只输出生成的可执行Echart图脚本，千万不要输出Echart图脚本案例，也不要输出其他额外信息"
+        selected: false
+        title: 生成Echart图表
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1742203199390'
+      position:
+        x: 2188.353403461764
+        y: -201.93442247976566
+      positionAbsolute:
+        x: 2188.353403461764
+        y: -201.93442247976566
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: not empty
+            id: ec17b9a1-2c30-4a4f-81b5-1da77fd7dee2
+            value: ''
+            varType: array[object]
+            variable_selector:
+            - '1741936141144'
+            - result
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 125
+      id: '1742262878091'
+      position:
+        x: 969.4199196591337
+        y: -163.0722962839112
+      positionAbsolute:
+        x: 969.4199196591337
+        y: -163.0722962839112
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        answer: 您的问题【{{#sys.query#}}】暂时没有数据支撑或者数据未发布，请稍后再试
+        desc: ''
+        selected: false
+        title: 没有查到到问题相关的知识
+        type: answer
+        variables: []
+      height: 136
+      id: '1742262920896'
+      position:
+        x: 1239.419919659134
+        y: 96.9277037160885
+      positionAbsolute:
+        x: 1239.419919659134
+        y: 96.9277037160885
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        code: "\ndef main(echartjson: str) -> dict:\n    return {\n        \"result\"\
+          : echartjson,\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: 加工和归集图表数据
+        type: code
+        variables:
+        - value_selector:
+          - '1742203199390'
+          - text
+          variable: echartjson
+      height: 53
+      id: '1742265602173'
+      position:
+        x: 2488.4341442140017
+        y: -201.93442247976566
+      positionAbsolute:
+        x: 2488.4341442140017
+        y: -201.93442247976566
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -370.45202030320854
+      y: 376.1159362998003
+      zoom: 0.8133791981321266

@@ -54,12 +54,29 @@ public class InitLifeCycleEventListener implements IocLifeCycleEventListener {
         //tempConf.setTxIsolationLevel("READ_COMMITTED");
         tempConf.setJndiName("jndi-clickhousedm");
         tempConf.setInitialConnections(3);
-        tempConf.setMinimumSize(10);
-        tempConf.setMaximumSize(10);
+        tempConf.setMinimumSize(5);
+        tempConf.setMaximumSize(5);
         tempConf.setUsepool(true);
         tempConf.setShowsql(true);
         tempConf.setQueryfetchsize(1000);
         SQLManager.startPool(tempConf);
+		
+		tempConf = new DBConf();
+		tempConf.setPoolname("test_dify");//数据源名称  
+		tempConf.setDriver("com.mysql.cj.jdbc.Driver");//clickhouse驱动  
+		tempConf.setJdbcurl("jdbc:mysql://10.13.6.127:3306/test_dify?useUnicode=true&characterEncoding=utf-8&useSSL=false&rewriteBatchedStatements=true");
+		//数据库账号和口令  
+		tempConf.setUsername("root");
+		tempConf.setPassword("passwd");
+		tempConf.setValidationQuery("select 1 ");//数据库连接校验sql  
+		//tempConf.setTxIsolationLevel("READ_COMMITTED");
+		tempConf.setJndiName("jndi-test_dify");
+		tempConf.setInitialConnections(3);
+		tempConf.setMinimumSize(5);
+		tempConf.setMaximumSize(5);
+		tempConf.setUsepool(true);
+		tempConf.setShowsql(true);
+		SQLManager.startPool(tempConf);
 
 
 	}

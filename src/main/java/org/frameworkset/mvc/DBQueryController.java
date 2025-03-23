@@ -45,6 +45,7 @@ public class DBQueryController {
         }
         List<Map> datas = null;
         try {
+			logger.info("Clickhouse data query :");
             datas = SQLExecutor.queryListWithDBName(Map.class, "clickhousedm",sql);
 
         } catch (SQLException e) {
@@ -55,6 +56,24 @@ public class DBQueryController {
         return datas;
 
     }
+	
+	public @ResponseBody List<Map> queryDataMysql(String sql){
+		if(SimpleStringUtil.isEmpty(sql)){
+			return new ArrayList<>();
+		}
+		List<Map> datas = null;
+		logger.info("Mysql data query :");
+		try {
+			datas = SQLExecutor.queryListWithDBName(Map.class, "test_dify",sql);
+			
+		} catch (SQLException e) {
+			logger.error("execute sql failed:"+sql,e);
+			datas = new ArrayList<>();
+		}
+		
+		return datas;
+		
+	}
 	 
 
 }
