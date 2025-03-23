@@ -1,15 +1,13 @@
 #开发调试
 设置jvm启动参数
--DdocBase=E:/workspace/bbossgroups/bbootdemo/WebRoot 
--DcontextPath=demoproject 
--Dport=8080
-
+ 
 
 # 打运行包：
 
 gradle releaseVersion
 
 # 启动应用
+启动前注释application.properties中的web.docBase配置
 ## windows
 startup.bat/restart.bat
 
@@ -27,4 +25,8 @@ chmod +x stop.sh
 
 # 访问地址：
 
-http://localhost/contextpath/examples/index.page
+
+mysql
+http://localhost:8080/visualops/channelfullview/queryDataMysql.api
+Clickhouse
+http://localhost:8080/visualops/channelfullview/queryData.api
