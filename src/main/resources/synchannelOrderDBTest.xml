@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+    <property name="iops_queryChannelOrder">
+        <![CDATA[
+		    select * from iops_channel_order where CHANNEL_NAME in ('西安京北网络科技有限公司','湖南梯度网络科技有限公司') limit 1,5000
+		]]>
+    </property>
+    <property name="iops_insertChannelOrder">
+        <![CDATA[
+		    insert into iops_channel_order
+		        (HANDLE_TIME,
+		        BUSINESS_NAME,
+		        BUSINESS_TYPE,
+		        CHANNEL_CARD,
+		        PREFERENTIAL_CODE,
+		        PREFERENTIAL_NAME,
+		        CHANNEL_NAME,
+		        CITY_CODE,
+		        CITY_NAME,
+		        BOSS_CARD,
+		        ORDER_TOTAL,
+		        ORDER_RETAINED,
+		        ORDER_RETAINED1,
+		        ORDER_RETAINED2,
+		        ORDER_RETAINED3,
+		        ORDER_RETAINED4,
+		        ORDER_RETAINEDN,
+		        YEAR,
+		        MONTH,
+		        DAY,
+		        HOUR)
+		 values(#[handleTime],
+		        #[businessName],
+		        #[businessType],
+		        #[channelCard],
+		        #[preferentialCode],
+		        #[preferentialName],
+		        #[channelName],
+		        #[cityCode],
+		        #[cityName],
+		        #[bossCard],
+		        #[orderTotal],
+		        #[orderRetained],
+		        #[orderRetained1],
+		        #[orderRetained2],
+		        #[orderRetained3],
+		        #[orderRetained4],
+		        #[orderRetainedn],
+		        #[year],
+		        #[month],
+		        #[day],
+		        #[hour])
+		]]>
+    </property>
+
+
+
+    <property name="iops_queryChannelbackOrder">
+        <![CDATA[
+		    select * from iops_channel_orderback  where chnl_name in  ('西安京北网络科技有限公司','湖南梯度网络科技有限公司')
+		]]>
+    </property>
+
+    <property name="iops_insertChannelbackOrder">
+        <![CDATA[
+		    insert into iops_channel_orderback 
+		    (back_orders,back_time,chnl_code,chnl_name,discnt_code,discnt_name,eparchy_code,eparchy_name,
+		    static_day,static_hour,static_month,static_year,trade_type_code,trade_type_name) 
+		    values(#[backOrders],#[dataTime],#[chnlCode],#[chnlName],
+		    #[discntCode],#[discntName],
+		    #[eparchyCode],#[eparchyName],
+		    #[staticDay],#[staticHour],
+		    #[staticMonth],#[staticYear],
+		    #[tradeTypeCode],#[tradeTypeName])
+		]]>
+    </property>
+    
+    
+    
+</properties>
