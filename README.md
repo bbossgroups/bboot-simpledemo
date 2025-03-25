@@ -1,3 +1,9 @@
+bboot simple demo,包含：
+1. Clickhouse、Mysql通用查询服务（用户可以自行扩展增加其他类型数据库查询服务）；
+2. Dify+Deepseek+Clickhouse+Echart渠道订单和退订统计问答工作流DSL：dify/Clickhouse渠道订单和退订分析.yml
+3. Clickhouse数据迁移到Mysql作业：org.frameworkset.datatran.DataSynJob
+ 
+   ETL&流处理参考文档   https://esdoc.bbossgroups.com/#/datatran-plugins
 #开发调试
 设置jvm启动参数
  
@@ -24,9 +30,10 @@ stop.bat
 chmod +x stop.sh
 
 # 访问地址：
+1. 通用mysql查询服务
 
-
-mysql
 http://localhost:8080/visualops/channelfullview/queryDataMysql.api
-Clickhouse
+
+2. 通用Clickhouse查询服务
+ 
 http://localhost:8080/visualops/channelfullview/queryData.api
