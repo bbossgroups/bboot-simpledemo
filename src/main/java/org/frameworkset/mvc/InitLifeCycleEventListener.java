@@ -46,7 +46,7 @@ public class InitLifeCycleEventListener implements IocLifeCycleEventListener {
         DBConf tempConf = new DBConf();
         tempConf.setPoolname("clickhousedm");//数据源名称  
         tempConf.setDriver("com.github.housepower.jdbc.ClickHouseDriver");//clickhouse驱动  
-        tempConf.setJdbcurl("jdbc:clickhouse://10.13.6.4:29000,10.13.6.7:29000,10.13.6.6:29000/visualops?b.enableBalance=true&b.balance=roundbin");
+        tempConf.setJdbcurl("jdbc:clickhouse://101.131.6.4:29000,101.131.6.7:29000,101.131.6.6:29000/visualops?b.enableBalance=true&b.balance=roundbin");
         //数据库账号和口令  
         tempConf.setUsername("default");
         tempConf.setPassword("123456");
@@ -64,7 +64,7 @@ public class InitLifeCycleEventListener implements IocLifeCycleEventListener {
 		tempConf = new DBConf();
 		tempConf.setPoolname("test_dify");//数据源名称  
 		tempConf.setDriver("com.mysql.cj.jdbc.Driver");//clickhouse驱动  
-		tempConf.setJdbcurl("jdbc:mysql://10.13.6.127:3306/test_dify?useUnicode=true&characterEncoding=utf-8&useSSL=false&rewriteBatchedStatements=true");
+		tempConf.setJdbcurl("jdbc:mysql://101.131.6.127:3306/test_dify?useUnicode=true&characterEncoding=utf-8&useSSL=false&rewriteBatchedStatements=true");
 		//数据库账号和口令  
 		tempConf.setUsername("root");
 		tempConf.setPassword("passwd");

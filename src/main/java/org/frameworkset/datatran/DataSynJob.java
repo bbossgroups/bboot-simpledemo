@@ -42,7 +42,7 @@ public class DataSynJob {
 		DBInputConfig dbInputConfig = new DBInputConfig();
 		dbInputConfig.setDbName("clickhousedm")
 				.setDbDriver("com.github.housepower.jdbc.ClickHouseDriver") //数据库驱动程序，必须导入相关数据库的驱动jar包
-				.setDbUrl("jdbc:clickhouse://10.13.6.4:29000,10.13.6.7:29000,10.13.6.6:29000/visualops?b.enableBalance=true&b.balance=roundbin")
+				.setDbUrl("jdbc:clickhouse://101.131.6.4:29000,101.131.6.7:29000,101.131.6.6:29000/visualops?b.enableBalance=true&b.balance=roundbin")
 				.setDbUser("default")
 				.setDbPassword("123456")
 				.setValidateSQL("select 1")
@@ -57,7 +57,7 @@ public class DataSynJob {
 		dbOutputConfig
 				.setDbName("test-dify")
 				.setDbDriver("com.mysql.cj.jdbc.Driver") //数据库驱动程序，必须导入相关数据库的驱动jar包
-				.setDbUrl("jdbc:mysql://10.13.6.127:3306/test_dify?useUnicode=true&characterEncoding=utf-8&useSSL=false&rewriteBatchedStatements=true")
+				.setDbUrl("jdbc:mysql://101.131.6.127:3306/test_dify?useUnicode=true&characterEncoding=utf-8&useSSL=false&rewriteBatchedStatements=true")
 				.setDbUser("root")
 				.setDbPassword("passwd")
 				.setValidateSQL("select 1")
