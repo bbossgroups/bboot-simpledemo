@@ -9,6 +9,8 @@
 	<listener>
 		<listener-class>org.frameworkset.web.listener.ApplicationLifeListener</listener-class>
 	</listener>
+    <!--jetty环境注释过滤器：CharsetEncoding，tomcat环境放开以下过滤器-->
+    <!-- 
     <filter>
         <filter-name>CharsetEncoding</filter-name>
         <filter-class>com.frameworkset.common.filter.CharsetEncodingFilter</filter-class>
@@ -42,7 +44,7 @@
         <filter-name>CharsetEncoding</filter-name>
         <url-pattern>*.api</url-pattern>
     </filter-mapping>
-  
+  -->
   
   
 	<servlet>
