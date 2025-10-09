@@ -100,10 +100,9 @@ configure(allprojects) { project ->
 	}
 	if(project.getProperty('skipTest').equals("true"))
 	{
-		compileTestJava.enabled=false
-		processTestResources.enabled=false
-		testClasses.enabled = false
-		test.enabled = false
+        tasks.withType(Test) {
+            enabled = false
+        }
 	}
 
 	sourceSets {
@@ -143,9 +142,9 @@ configure(allprojects) { project ->
 		testImplementation 'junit:junit:4.13.1'
         compileOnly 'javax.jws:javax.jws-api:1.1'
 		api(
-				[group: 'org.apache.logging.log4j', name: 'log4j-api', version: "${log4j2_version}", transitive: false],
-				[group: 'org.apache.logging.log4j', name: 'log4j-core', version: "${log4j2_version}", transitive: false],
-				[group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: "${log4j2_version}", transitive: true],
+				[group: 'org.apache.logging.log4j', name: 'log4j-api', version: log4j2_version, transitive: false],
+				[group: 'org.apache.logging.log4j', name: 'log4j-core', version: log4j2_version, transitive: false],
+				[group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: log4j2_version, transitive: true],
 		)
 		api  (
 				//jetty,tomcat二选一，如果需要采用tomcat，则注释jetty，打开tomcat
