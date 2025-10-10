@@ -200,8 +200,8 @@ configure(allprojects) { project ->
         from('runfiles')
                 {
                     expand(
-                            bboss_version: "${bboss_version}",
-                            project: "${project.name}"
+                            bboss_version: bboss_version,
+                            project: project.name
                     )
 
                 }
